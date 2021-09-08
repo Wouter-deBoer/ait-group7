@@ -1,1 +1,1 @@
-# ait-group7
+python3 main.py
