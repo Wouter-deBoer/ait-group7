@@ -27,7 +27,7 @@ class Bayes:
 
     def compute_posterior(self, observations_list):
         posterior = self.single_posterior_update(observations_list[0], self.priors)
-        for observation in observations_list[1:-1]:
+        for observation in observations_list[1:]:
             posterior = self.single_posterior_update(observation, posterior)
         return posterior
 
