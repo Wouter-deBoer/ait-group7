@@ -1,2 +1,2 @@
-cd ait-group7-main
+cd ait-group7-main   
 python3 main.py
