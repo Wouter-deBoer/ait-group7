@@ -26,10 +26,10 @@ class Bayes:
         return posterior
 
     def compute_posterior(self, observations_list):
-        posterior = self.single_posterior_update(observations_list[0], self.priors)
-        for observation in observations_list[1:]:
-            posterior = self.single_posterior_update(observation, posterior)
-        return posterior
+        for observation in observations_list:
+            self.priors = self.single_posterior_update(observation, self.priors)
+        assert np.isclose(np.sum(self.priors), 1.), "The sum of the posteriors is not equal to 1"
+        return self.priors
 
 if __name__ == "__main__":
     hypothesis = ["bowl1", "bowl2"]
@@ -49,7 +49,6 @@ if __name__ == "__main__":
 
     p_2 = b.compute_posterior(["chocolate", "vanilla"])
     print("chocolate, vanilla - posterior: %s" % p_2)
-
 
     ## Fill in questions
     f = open("questions.txt", "w+")
